@@ -14,9 +14,7 @@ This repository will include all my code implementations in algorithms and data 
 - Lecture 7 – Counting Sort, Radix Sort, Lower Bounds for Sorting and Searching
 ### Unit 3: Hashing
 - Lecture 8 – Hashing with Chaining
-- Recitation 8 – Simulation Algorithms
 - Lecture 9 – Table Doubling, Karp-Rabin
-- Recitation 9b – DNA Sequence Matching
 - Lecture 10 – Open Addressing, Cryptographic Hashing
 ### Unit 4: Numerics
 - Lecture 11 – Integer Arithmetic, Karatsuba Multiplication
