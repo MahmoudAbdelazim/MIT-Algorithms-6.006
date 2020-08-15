@@ -5,46 +5,41 @@ using namespace std;
 void merge(vector<int> &A, int s, int mid, int e);
 void mergeSort(vector<int> &A, int s, int e);
 
+/*
+ * Applies the divide an conquer approach on the entire array
+ * dividing it into halves and calling the merge() operation on
+ * each subset
+ */
 void mergeSort(vector<int> &A, int s, int e) {
     if (s < e) {
-        int mid = s + (e - s) / 2;
+        int mid = (s + e) / 2;
         mergeSort(A, s, mid);
         mergeSort(A, mid + 1, e);
-        merge(A, s, mid, e);
+        merge(A, s, mid + 1, e);
     }
-    return;
 }
 
+/*
+ * merges two halves together
+ */
 void merge(vector<int> &A, int s, int mid, int e) {
-    vector<int> L(mid - s + 1);
-    vector<int> R(e - mid);
-    for (int i = 0; i < L.size(); i++) {
-        L[i] = A[i + s];
-    }
-    for (int i = 0; i < R.size(); i++) {
-        R[i] = A[i + mid + 1];
-    }
-    L.push_back(1e9);
-    R.push_back(1e9);
-    int i = 0, j = 0, k = s;
-    while (i < L.size() && j < R.size()) {
-        if (L[i] <= R[j]) {
-            A[k] = L[i];
-            i++;
+    vector<int> temp(A.size()); // a temp array to store the result of merging the two halves
+    int i = s, j = mid, k = s;
+    while (i <= mid - 1 && j <= e) { // stores elements in temp in the right order
+        if (A[i] <= A[j]) {
+            temp[k++] = A[i++];
         } else {
-            A[k] = R[j];
-            j++;
+            temp[k++] = A[j++];
         }
-        k++;
     }
-    while (i < L.size()) {
-        A[k] = L[i];
-        i++, k++;
+    while (i <= mid - 1) { // if there are still elements in the right half, add it
+        temp[k++] = A[i++];
     }
-    while (j < R.size()) {
-        A[k] = R[j];
-        j++, k++;
+    while (j <= e) { // if there are still elements in the left half, add it
+        temp[k++] = A[j++];
     }
+    for (i = s; i <= e; i++) //copy elements from the temp array to the actual array
+        A[i] = temp[i];
 }
 
 int main() {

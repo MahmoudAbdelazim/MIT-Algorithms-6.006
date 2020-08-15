@@ -2,6 +2,10 @@
 
 using namespace std;
 
+/*
+ * A PrioriryQueue object is implemented using a maxHeap as an array
+ * , it supports these operations: insert(), max(), extractMax(), increaseKey()
+ */
 template <class T>
 class PriorityQueue {
 private:
